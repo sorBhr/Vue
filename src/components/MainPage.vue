@@ -1,9 +1,11 @@
 <template>
-	<el-menu class="el-menu-vertical-demo" default-active="1" @open="handleOpen" @close="handleClose">
+	<div containr>
+	<div class="left">
+		<el-menu class="el-menu-vertical-demo" :default-active="this.$router.path" @open="handleOpen" @close="handleClose" router>
 		<el-submenu index="1">
 			<template slot="title"><i class="el-icon-location"></i><span>导航</span></template>
 			<el-menu-item-group>
-				<el-menu-item index="1-1">选项1</el-menu-item>
+				<el-menu-item index="/hello">选项1</el-menu-item>
 				<el-menu-item index="1-2">选项2</el-menu-item>
 				<el-menu-item index="1-3">选项3</el-menu-item>
 				<el-menu-item index="1-4">选项4</el-menu-item>
@@ -57,6 +59,13 @@
 			
 		</el-submenu>
 	</el-menu>
+	</div>
+	<div class="right">
+		<!-- <img src="../assets/logo.png"> -->
+    
+		<router-view></router-view>
+	</div>
+	</div>
 </template>
 
 <script>
@@ -111,9 +120,23 @@
 	}
 </script>
 <style scoped>
+.containr{
+	height: 100%;
+}
 	.el-menu-vertical-demo:not(.el-menu--collapse){
 		width:300px;
-		min-height: 400px;
+		height: 100%;
+	}
+	.left{
+		float: left;
+		width:300px;
+		overflow-y: scroll;
+		height: 100% ;
+	}
+	.right{
+		margin-left: 300px;
+		overflow-y: scroll;
+		height: 100% ;
 	}
 	/*.el-menu-title {
 		padding-left: 45px;
